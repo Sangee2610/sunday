@@ -1,0 +1,27 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Bluecat</title>
+        {% else %}
+        <title>Welcome to Bluecat</title>
+        {% endif %}
+<script src="form.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+            BLUECAT <br>
+            <!--a href="{{ url_for('login') }}">Login</a-->
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
