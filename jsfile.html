@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container" class="row">
+        <form class=" pt-3 form">
+            <div class="row">
+                            <input type="text"  id="user" placeholder="Enter username" name="user">
+                            <input type="password"  id="pwd" placeholder="Enter password" name="pswd">
+                            <button type="button">remove</button>
+            </div>
+            <div class="new_form row">
+
+            </div>
+            <div class="row mt-2">
+                <button id="createUser" type="button" >create user</button>
+                <button type="button" id="SUBMIT" >Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+            x = 0;
+            $("#createUser").click(function(){
+                newdiv = document.createElement('div');
+                newdiv.setAttribute('class','row newform')
+               // $(newdiv).append("<div class='form-group new_form'></div>");
+                var userField = document.createElement('input');
+                var passwordField = document.createElement("input");
+				var userField1 = document.createElement('input');
+                var passwordField1 = document.createElement("input");
+                var btn = document.createElement('button');
+                x++;
+                userField.setAttribute("type","text");
+                userField.setAttribute("name",'user'+x);
+                userField.setAttribute('placeholder','Enter UserName');
+                passwordField.setAttribute("type","paswsword");
+                passwordField.setAttribute("name",'pswd'+x);
+                passwordField.setAttribute('placeholder','Enter Password');
+				userField1.setAttribute("type","text");
+                userField1.setAttribute("name",'user'+x);
+                userField1.setAttribute('placeholder','Enter UserName');
+                passwordField1.setAttribute("type","paswsword");
+                passwordField1.setAttribute("name",'pswd'+x);
+                passwordField1.setAttribute('placeholder','Enter Password');
+                btn.setAttribute('class','btn btn-danger m-2 remove col-2');
+                btn.setAttribute('name','remove'+x)
+                btn.setAttribute('type',"button")
+
+                $(btn).html("remove")
+
+                // $('.form').append(newdiv);
+
+               // $('.form').append(newdiv);
+                $(".new_form").append(userField, passwordField,"&nbsp;","&nbsp;", userField1, passwordField1, "&nbsp;","&nbsp;", btn);
+                
+            });
+
+
+            $("#SUBMIT").click(function(){
+                user =[];
+                var fields = $("input");
+                for(i=0;i< fields.length;i++) {
+                    user.push({'user':fields[i].name , 'val':fields[i].value});
+               }
+                console.log(user)
+            });
+        });
+    </script>
+</body>
+</html>
